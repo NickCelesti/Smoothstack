@@ -1,7 +1,7 @@
 // Nick Celesti
 package Java_Basics_1;
 
-class Assignment1 {
+class Assignment1_1 {
     public static void main(String[] args) {
         // -----------------------------------
         System.out.println("1)");

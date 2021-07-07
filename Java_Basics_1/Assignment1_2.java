@@ -4,7 +4,7 @@ package Java_Basics_1;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Assignment2 {
+public class Assignment1_2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in); // used to get input
         Random rand = new Random(); // random number generator
