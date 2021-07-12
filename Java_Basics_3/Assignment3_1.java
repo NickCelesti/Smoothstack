@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 public class Assignment3_1 {
 
-    static void RecursivePrint(File[] arr, int level) {
+    static void printDirectory(File[] arr, int tabLevel) {
 
         for (int i = 0; i < arr.length; i++) {
             // tabbing
-            for (int j = 0; j < level; j++) {
+            for (int j = 0; j < tabLevel; j++) {
                 System.out.print("\t");
             }
 
@@ -23,13 +23,12 @@ public class Assignment3_1 {
                 System.out.println("[" + arr[i].getName() + "]");
 
                 // recursion
-                RecursivePrint(arr[i].listFiles(), level + 1);
+                printDirectory(arr[i].listFiles(), tabLevel + 1);
             }
         }
 
     }
 
-    // Driver Method
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String path;
@@ -47,7 +46,7 @@ public class Assignment3_1 {
 
         System.out.println("Directory: " + directory);
 
-        RecursivePrint(directory.listFiles(), 0);
+        printDirectory(directory.listFiles(), 0);
 
         sc.close();
     }
