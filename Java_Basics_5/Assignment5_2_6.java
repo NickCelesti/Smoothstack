@@ -1,17 +1,17 @@
 package Java_Basics_5;
 
-import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+// import java.math.BigDecimal;
+// import java.sql.Connection;
+// import java.sql.DriverManager;
+// import java.sql.ResultSet;
+// import java.sql.Statement;
 
 public class Assignment5_2_6 {
 
     public static class SampleSingleton {
 
         // conn does nothing right now
-        private static Connection conn = null;
+        // private static Connection conn = null;
 
         private static SampleSingleton instance = null;
 
