@@ -50,22 +50,16 @@ public class InputHandler {
 
     public static int getCardInput() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String ans = "";
         int n = 0; // all lists in this program start from 1 so the user must enter a valid input
 
         while (true) {
             try {
-                ans = br.readLine();
-                if (ans.length() == 6)
-                    n = Integer.parseInt(ans);
+                n = Integer.parseInt(br.readLine());
                 break;
             } catch (Exception e) {
-
+                System.out.println("Invalid Input, please try again");
             }
-            System.out.println("Invalid Input, please enter 6 digit card number");
         }
-        System.out.println("Accepted!");
-        System.out.println("\n-------------------------------------\n");
 
         return n;
     }
