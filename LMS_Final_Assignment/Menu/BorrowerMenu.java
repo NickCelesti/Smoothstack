@@ -4,13 +4,13 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import LMS_Final_Assignment.InputHandler;
 import LMS_Final_Assignment.Domain.Author;
 import LMS_Final_Assignment.Domain.Book;
 import LMS_Final_Assignment.Domain.BookLoan;
 import LMS_Final_Assignment.Domain.Borrower;
 import LMS_Final_Assignment.Domain.LibraryBranch;
 import LMS_Final_Assignment.Services.BorrowerService;
+import LMS_Final_Assignment.Services.InputHandler;
 
 public class BorrowerMenu {
 

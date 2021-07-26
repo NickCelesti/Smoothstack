@@ -40,6 +40,10 @@ public class BookLoanDAO extends BaseDAO<BookLoan> {
                 new Object[] { cardNo, branchId });
     }
 
+    public List<BookLoan> readLoansByCardNo(Integer cardNo) throws SQLException, ClassNotFoundException {
+        return this.read("select * from tbl_book_loans where cardNo = ? ORDER BY dueDate asc", new Object[] { cardNo });
+    }
+
     @Override
     public List<BookLoan> extractData(ResultSet rs) throws SQLException, ClassNotFoundException {
         List<BookLoan> blList = new ArrayList<>();

@@ -5,10 +5,18 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import LMS_Final_Assignment.InputHandler;
+import LMS_Final_Assignment.DAO.AuthorDAO;
+import LMS_Final_Assignment.DAO.BookDAO;
 import LMS_Final_Assignment.DAO.BookLoanDAO;
+import LMS_Final_Assignment.DAO.BorrowerDAO;
+import LMS_Final_Assignment.DAO.LibraryBranchDAO;
+import LMS_Final_Assignment.Domain.Author;
+import LMS_Final_Assignment.Domain.Book;
 import LMS_Final_Assignment.Domain.BookLoan;
+import LMS_Final_Assignment.Domain.Borrower;
+import LMS_Final_Assignment.Domain.LibraryBranch;
 
 public class AdminServiceBookLoan {
 
@@ -21,14 +29,37 @@ public class AdminServiceBookLoan {
         try {
             conn = util.getConnection();
             BookLoanDAO bdao = new BookLoanDAO(conn);
+            BookDAO bookDao = new BookDAO(conn);
+            AuthorDAO authorDAO = new AuthorDAO(conn);
+            LibraryBranchDAO branchDao = new LibraryBranchDAO(conn);
+            BorrowerDAO borrowerDAO = new BorrowerDAO(conn);
 
-            System.out.println("Select Book Loan: ");
-            List<BookLoan> loans = bdao.readAllLoans();
+            List<Borrower> borrList = borrowerDAO.readAllBorrowers();
+
+            List<Integer> cardNos = borrList.stream().map(n -> (n.getCardNo())).collect(Collectors.toList());
+
+            System.out.println("Enter card number: ");
+            int cardNo = 0;
+            while (true) {
+                cardNo = InputHandler.getCardInput();
+                if (cardNos.contains(cardNo)) {
+                    System.out.println("Accepted");
+                    break;
+                } else {
+                    System.out.println("Card number not in system, try again");
+                }
+            }
+
+            System.out.println("List of Book Loans for [CardNo: " + cardNo + "]: ");
+            List<BookLoan> loansCardNo = bdao.readLoansByCardNo(cardNo);
             int loanIndex = 1;
-            for (BookLoan bl : loans) {
-                System.out.println(loanIndex + ") [CardNo: " + bl.getCardNo() + "] [BookId: " + bl.getBookId()
-                        + "] [BranchId:" + bl.getBranchId() + "] [Checkout Date: " + bl.getDateOut() + "] [Due Date: "
-                        + bl.getDueDate() + "]");
+            for (BookLoan bl : loansCardNo) {
+                Book book = bookDao.readBookById(bl.getBookId());
+                Author author = authorDAO.readAuthorById(book.getAuthorId());
+                LibraryBranch branch = branchDao.readBranchFromId(bl.getBranchId());
+                System.out.println(loanIndex + ") [Book: " + book.getTitle() + " by " + author.getName()
+                        + "]\t[Branch: " + branch.getName() + ", " + branch.getAddress() + "]\t[Checkout Date: "
+                        + bl.getDateOut() + "]\t[Due Date: " + bl.getDueDate() + "]");
                 loanIndex++;
             }
             System.out.println(loanIndex + ") Cancel Transaction");
@@ -49,7 +80,7 @@ public class AdminServiceBookLoan {
                 dt = LocalDateTime.parse(dueDate);
             }
 
-            loan = loans.get(--loanChoice);
+            loan = loansCardNo.get(--loanChoice);
             loan.setDueDate(Timestamp.valueOf(dt));
             bdao.update(loan);
             conn.commit();

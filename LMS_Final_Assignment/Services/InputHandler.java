@@ -1,4 +1,4 @@
-package LMS_Final_Assignment;
+package LMS_Final_Assignment.Services;
 
 import java.io.BufferedReader;
 import java.io.IOException;

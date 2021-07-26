@@ -15,20 +15,17 @@ public class GenreDAO extends BaseDAO<Genre> {
 
     @Override
     List<Genre> extractData(ResultSet rs) throws SQLException, ClassNotFoundException {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     Genre extractSingleData(ResultSet rs) throws SQLException, ClassNotFoundException {
-        // TODO Auto-generated method stub
         return null;
     }
 
     // @Override
     // List<Genre> extract(ResultSet resultSet) throws SQLException,
     // ClassNotFoundException {
-    // // TODO Auto-generated method stub
     // return null;
     // }
 

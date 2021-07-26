@@ -161,7 +161,7 @@ public class LibrarianService {
             BookCopyDAO bcd = new BookCopyDAO(conn);
             bCopy.setNoOfCopies(newNoOfCopies);
             bcd.update(bCopy);
-
+            System.out.println("Updated copies");
         } catch (Exception e) {
             conn.rollback();
         } finally {

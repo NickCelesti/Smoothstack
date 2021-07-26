@@ -2,7 +2,7 @@ package LMS_Final_Assignment.Menu;
 
 import java.sql.SQLException;
 
-import LMS_Final_Assignment.InputHandler;
+import LMS_Final_Assignment.Services.InputHandler;
 
 public class MainMenu {
 

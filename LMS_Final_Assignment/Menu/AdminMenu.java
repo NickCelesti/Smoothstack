@@ -2,13 +2,13 @@ package LMS_Final_Assignment.Menu;
 
 import java.sql.SQLException;
 
-import LMS_Final_Assignment.InputHandler;
 import LMS_Final_Assignment.Services.AdminServiceAuthor;
 import LMS_Final_Assignment.Services.AdminServiceBook;
 import LMS_Final_Assignment.Services.AdminServiceBookLoan;
 import LMS_Final_Assignment.Services.AdminServiceBorrower;
 import LMS_Final_Assignment.Services.AdminServiceLibraryBranch;
 import LMS_Final_Assignment.Services.AdminServicePublisher;
+import LMS_Final_Assignment.Services.InputHandler;
 
 public class AdminMenu {
 
@@ -41,7 +41,7 @@ public class AdminMenu {
         MainMenu.menuMain();
     }
 
-    private static void crudBooks() throws SQLException { // TODO: fix try catch here
+    private static void crudBooks() throws SQLException {
         AdminServiceBook bookService = new AdminServiceBook();
         System.out.println("1) Add Book");
         System.out.println("2) Update Book");
@@ -154,7 +154,7 @@ public class AdminMenu {
     private static void bookLoan() throws SQLException {
         AdminServiceBookLoan bookLoanService = new AdminServiceBookLoan();
 
-        bookLoanService.overrideBookLoan();
+        System.out.println(bookLoanService.overrideBookLoan());
     }
 
 }

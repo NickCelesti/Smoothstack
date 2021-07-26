@@ -4,11 +4,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import LMS_Final_Assignment.InputHandler;
 import LMS_Final_Assignment.Domain.Author;
 import LMS_Final_Assignment.Domain.Book;
 import LMS_Final_Assignment.Domain.BookCopy;
 import LMS_Final_Assignment.Domain.LibraryBranch;
+import LMS_Final_Assignment.Services.InputHandler;
 import LMS_Final_Assignment.Services.LibrarianService;
 
 public class LibrarianMenu {
@@ -29,7 +29,7 @@ public class LibrarianMenu {
         }
     }
 
-    private static void menuLib2() throws SQLException { // TODO: fix try catch here
+    private static void menuLib2() throws SQLException {
         List<LibraryBranch> branches = new ArrayList<>();
 
         branches = service.readAllBranches();
