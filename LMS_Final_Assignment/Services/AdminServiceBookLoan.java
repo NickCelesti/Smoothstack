@@ -70,7 +70,6 @@ public class AdminServiceBookLoan {
 
             LocalDateTime dt;
             System.out.println("Enter new Due Date ('quit' to cancel, 'next' for 7 days from now): ");
-            // TODO: add dateInput
             String dueDate = InputHandler.getStringInput();
             if (dueDate.equals("quit")) {
                 return "Transaction cancelled";

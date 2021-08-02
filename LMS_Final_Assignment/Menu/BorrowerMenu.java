@@ -123,7 +123,6 @@ public class BorrowerMenu {
             if (bookRow == bookIndex) {
                 System.out.println("Transation Cancelled");
             } else {
-                // TODO: check for a duplicate entry
                 service.returnBook(bookLoans.get(bookRow - 1).getBookId(), branches.get(branchRow - 1).getId(), cardNo);
             }
         }
